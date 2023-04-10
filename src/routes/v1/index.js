@@ -16,4 +16,10 @@ const router = express.Router();
 router.post("/bookings", [checkAuthentication], create);
 router.get("/bookings", getAllBookings);
 
+router.get("/ping", (req, res) => {
+  return res.status(200).json({
+    message: "pinged",
+  });
+});
+
 module.exports = router;
