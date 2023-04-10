@@ -2,7 +2,7 @@ const express = require("express");
 
 const {
   create,
-  sendMessageToQueue,
+  getAllBookings,
 } = require("../../controllers/booking-controller");
 const {
   checkAuthentication,
@@ -14,6 +14,6 @@ const {
 const router = express.Router();
 
 router.post("/bookings", [checkAuthentication], create);
-router.post("/publish", sendMessageToQueue);
+router.get("/bookings", getAllBookings);
 
 module.exports = router;

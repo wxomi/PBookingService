@@ -6,7 +6,8 @@ const agent = new https.Agent({ rejectUnauthorized: false });
 const checkAuthentication = async (req, res, next) => {
   try {
     const response = await axios.get(
-      "http://localhost:3001/authservice/api/v1/isAuthenticated",
+      // "http://localhost:3001/authservice/api/v1/isAuthenticated",
+      "https://pflightsauthservice.onrender.com/authservice/api/v1/isAuthenticated",
       {
         httpsAgent: agent,
         headers: {

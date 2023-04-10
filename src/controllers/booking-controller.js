@@ -25,6 +25,7 @@ const sendMessageToQueue = async (data) => {
 
 const create = async (req, res) => {
   try {
+    // console.log(req.body);
     req.body.userId = req.body.data.id;
     const { flightId, noOfSeats, userId } = req.body;
     const response = await bookingService.createBooking({
@@ -51,7 +52,27 @@ const create = async (req, res) => {
   }
 };
 
+const getAllBookings = async (req, res) => {
+  try {
+    const response = await bookingService.getAllBookings();
+
+    return res.status(StatusCodes.OK).json({
+      message: "Successfully fethced Bookings",
+      success: true,
+      error: {},
+      data: response,
+    });
+  } catch (error) {
+    return res.status(error.statusCode).json({
+      message: error.message,
+      success: false,
+      err: error.explaination,
+      data: {},
+    });
+  }
+};
 module.exports = {
   sendMessageToQueue,
   create,
+  getAllBookings,
 };
