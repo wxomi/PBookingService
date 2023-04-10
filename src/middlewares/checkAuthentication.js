@@ -14,12 +14,12 @@ const checkAuthentication = async (req, res, next) => {
         },
       }
     );
-    console.log(response.data.success);
     if (!response.data.success) {
       return res.status(401).json({
         message: "Unauthorized",
       });
     }
+    req.body.data = response.data.data;
     next();
   } catch (error) {
     if (error.response && error.response.status === 401) {

@@ -29,7 +29,7 @@ class BookingRepository {
       //   },
       // });
       // return true;
-      const booking = Booking.findByPk(bookingId);
+      const booking = await Booking.findByPk(bookingId);
       if (data.status) {
         booking.status = data.status;
       }

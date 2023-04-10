@@ -1,17 +1,19 @@
 const express = require("express");
 
-const { BookingController } = require("../../controllers/index");
+const {
+  create,
+  sendMessageToQueue,
+} = require("../../controllers/booking-controller");
 const {
   checkAuthentication,
 } = require("../../middlewares/checkAuthentication");
 // const { createChannel } = require("../../utils/messageQueue");
 
 // const channel = await createChannel();
-const bookingController = new BookingController();
 
 const router = express.Router();
 
-router.post("/bookings", [checkAuthentication], bookingController.create);
-router.post("/publish", bookingController.sendMessageToQueue);
+router.post("/bookings", [checkAuthentication], create);
+router.post("/publish", sendMessageToQueue);
 
 module.exports = router;
