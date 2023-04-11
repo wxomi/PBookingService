@@ -36,6 +36,7 @@ class BookingService {
       // res.data.headers["Content-Type"];
       return finalbooking;
     } catch (error) {
+      console.log(error);
       if (error.name == "Repository Error" || error.name == "ValidationError") {
         throw error;
       }
