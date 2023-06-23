@@ -33,6 +33,8 @@ const create = async (req, res) => {
   try {
     // console.log(req.body);
     req.body.userId = req.body.data.id;
+    console.log(req.body);
+
     const { flightId, noOfSeats, userId } = req.body;
     const response = await bookingService.createBooking({
       flightId,
